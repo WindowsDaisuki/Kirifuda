@@ -1,6 +1,5 @@
 package com.naninuneda.kirifuda.card;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,32 +8,34 @@ import com.naninuneda.kirifuda.card.Rank;
 import com.naninuneda.kirifuda.card.Suit;
 
 public final class Card {
-	private final Rank _rank;
-	private final Suit _suit;
-	private static Map<String, Card> _values = new HashMap();
+
+
+	private final Rank rank;
+	private final Suit suit;
+	private static Map<String, Card> values = new HashMap();
 
 	static {
 		for (Rank rank : Rank.values()) {
 			for (Suit suit : Suit.values()) {
 				Card card = new Card(suit, rank);
-				_values.put(suit.toString() + rank.toString(), card);
+				values.put(suit.toString() + rank.toString(), card);
 			}
 		}
-		_values.put("JOKER", new Card(null, null));
+		values.put("JOKER", new Card(null, null));
 	}
 
 	public Rank getRank() {
 		if (this == JOKER) {
 			throw new IllegalStateException("JOKERにはランクはありません");
 		}
-		return this._rank;
+		return this.rank;
 	}
 
 	public Suit getSuit() {
 		if (this == JOKER) {
 			throw new IllegalStateException("JOKERにはスートはありません");
 		}
-		return this._suit;
+		return this.suit;
 	}
 
 	public static final Cards values() {
@@ -100,12 +101,12 @@ public final class Card {
 	public static final Card JOKER = valueOf("JOKER");
 
 	private Card(Suit suit, Rank rank) {
-		this._suit = suit;
-		this._rank = rank;
+		this.suit = suit;
+		this.rank = rank;
 	}
 
 	public static Card valueOf(Suit suit, Rank rank) {
-		return (Card) _values.get(suit.toString() + rank.toString());
+		return (Card) values.get(suit.toString() + rank.toString());
 	}
 
 	public static Boolean validate(String str) {
@@ -125,12 +126,12 @@ public final class Card {
 
 	public static Card valueOf(String str) {
 		if (str.equals("JOKER")) {
-			return (Card) _values.get("JOKER");
+			return (Card) values.get("JOKER");
 		}
 		char firstChar = str.charAt(0);
 		char secondChar = str.charAt(1);
 		if (validate(str).booleanValue()) {
-			return (Card) _values.get(Suit.valueOf(firstChar).toString() + Rank.valueOf(secondChar).toString());
+			return (Card) values.get(Suit.valueOf(firstChar).toString() + Rank.valueOf(secondChar).toString());
 		}
 		throw new IllegalArgumentException("Card.valueOf(String) : Illegal Argument " + str);
 	}
@@ -139,13 +140,7 @@ public final class Card {
 		if (this == JOKER) {
 			return "JOKER";
 		}
-		return this._suit.toString() + this._rank.toString();
+		return this.suit.toString() + this.rank.toString();
 	}
 
-	public int compareTo(Card card) {
-		return
-
-		getRank().compareTo(card.getRank()) == 0 ? getSuit().compareTo(card.getSuit())
-				: card == JOKER ? -1 : this == JOKER ? 1 : card == JOKER ? 0 : getRank().compareTo(card.getRank());
-	}
 }

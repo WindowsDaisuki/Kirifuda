@@ -1,6 +1,7 @@
 package com.naninuneda.kirifuda.card;
 
 public enum Suit {
+
 	SPADES, HEARTS, CLUBS, DIAMONDS;
 
 	public String toString() {
