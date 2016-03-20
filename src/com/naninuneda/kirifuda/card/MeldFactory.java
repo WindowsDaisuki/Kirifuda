@@ -1,8 +1,5 @@
 package com.naninuneda.kirifuda.card;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-
 public class MeldFactory {
 
 	Melds melds;
@@ -47,6 +44,8 @@ public class MeldFactory {
 		if(cards.getSize() < 3){
 			return false;
 		}
+		
+		
 
 		if(cards.hasJoker()){
 			Cards noJoker = new Cards(cards.asList());
@@ -59,13 +58,16 @@ public class MeldFactory {
 					return false;
 				}
 			}
-
+			
 			noJoker.sort();
-
-
-
-
-
+			
+			int rank = noJoker.get(0).getRank().toInt();
+			
+			for(int i = 1; i < noJoker.getSize(); i++){
+				if(noJoker.get(i).getRank().toInt() != rank + 1){
+					return false;
+				}
+			}
 		}else{
 			//同じsuitでなければ連続と判断できない
 			Suit suit = cards.get(0).getSuit();
