@@ -1,7 +1,5 @@
 package com.naninuneda.kirifuda.player;
 
-import com.naninuneda.kirifuda.card.Grade;
-
 public class Enemy implements Player{
 
 	Grade grade;

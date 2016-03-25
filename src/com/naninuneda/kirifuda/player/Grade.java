@@ -1,4 +1,4 @@
-package com.naninuneda.kirifuda.card;
+package com.naninuneda.kirifuda.player;
 
 public enum Grade {
 
