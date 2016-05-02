@@ -7,34 +7,33 @@ public enum Grade {
 	//階級を返します．0が大富豪，4が大貧民です
 	public static Grade valueOf(int value) {
 		switch (value) {
-		case 0:
-			return DAIFUGOU;
-		case 1:
-			return FUGOU;
-		case 2:
-			return HEIMIN;
-		case 3:
-			return HINMIN;
-		case 4:
-			return DAIHINMIN;
+			case 0:
+				return DAIFUGOU;
+			case 1:
+				return FUGOU;
+			case 2:
+				return HEIMIN;
+			case 3:
+				return HINMIN;
+			case 4:
+				return DAIHINMIN;
 		}
-		throw new IllegalArgumentException("Grade.valueOf　の引数が不正です。:" + value);
+		throw new IllegalArgumentException("Grade.valueOf　の引数が不正です．:" + value);
 	}
 
-	public static Integer toInt(Grade grade){
-		switch (grade) {
-		case DAIFUGOU:
+	public Integer toInt(){
+		if(this == DAIFUGOU){
 			return 0;
-		case FUGOU:
+		}else if(this == FUGOU){
 			return 1;
-		case HEIMIN:
+		}else if(this == HEIMIN){
 			return 2;
-		case HINMIN:
+		}else if(this == HINMIN){
 			return 3;
-		case DAIHINMIN:
+		}else if(this == DAIHINMIN){
 			return 4;
 		}
-		throw new IllegalArgumentException("Grade.toInt　の引数が不正です。:" + grade);
+		throw new IllegalArgumentException("GradeクラスをIntegerに変換できません．");
 	}
 
 

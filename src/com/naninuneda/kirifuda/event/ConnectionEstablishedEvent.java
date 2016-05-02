@@ -1,8 +1,8 @@
 package com.naninuneda.kirifuda.event;
 
-import com.naninuneda.kirifuda.ClientInfo;
+import com.naninuneda.kirifuda.netty.ClientInfo;
 
-public class ConnectionEstablishedEvent {
+public class ConnectionEstablishedEvent implements Event{
 
 	public ClientInfo info;
 
@@ -22,8 +22,8 @@ public class ConnectionEstablishedEvent {
 	public ClientInfo getInfo(){
 		return info;
 	}
-	
-	public static String getEventName(){
+
+	public String getEventName(){
 		return "ConnectionEstablishedEvent";
 	}
 

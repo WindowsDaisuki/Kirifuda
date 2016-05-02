@@ -1,4 +1,4 @@
-package com.naninuneda.kirifuda;
+package com.naninuneda.kirifuda.netty;
 
 public class ClientInfo {
 

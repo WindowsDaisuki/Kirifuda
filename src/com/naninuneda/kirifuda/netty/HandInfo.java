@@ -1,4 +1,4 @@
-package com.naninuneda.kirifuda;
+package com.naninuneda.kirifuda.netty;
 
 import com.naninuneda.kirifuda.card.Cards;
 import com.naninuneda.kirifuda.player.Enemy;

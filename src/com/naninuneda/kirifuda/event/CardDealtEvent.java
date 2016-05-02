@@ -1,17 +1,17 @@
 package com.naninuneda.kirifuda.event;
 
-import com.naninuneda.kirifuda.HandInfo;
 import com.naninuneda.kirifuda.card.Cards;
+import com.naninuneda.kirifuda.netty.HandInfo;
 import com.naninuneda.kirifuda.player.Player;
 
-public class CardDealtEvent {
+public class CardDealtEvent implements Event{
 
 	private HandInfo info;
 	private Cards cards;
 
 	public CardDealtEvent(HandInfo info){
 		this.info = info;
-		
+
 	}
 
 	public Cards getHand() {
@@ -28,6 +28,11 @@ public class CardDealtEvent {
 
 	public Player[] getEnemys() {
 		return info.getEnemys();
+	}
+
+	@Override
+	public String getEventName() {
+		return this.getClass().getName();
 	}
 
 }
