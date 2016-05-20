@@ -1,6 +1,6 @@
 package com.naninuneda.kirifuda.event;
 
-import com.naninuneda.kirifuda.netty.ClientInfo;
+import com.naninuneda.kirifuda.net.ClientInfo;
 
 public class ConnectionEstablishedEvent implements Event{
 

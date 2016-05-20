@@ -1,4 +1,4 @@
-package com.naninuneda.kirifuda.netty;
+package com.naninuneda.kirifuda.net;
 
 import java.util.List;
 

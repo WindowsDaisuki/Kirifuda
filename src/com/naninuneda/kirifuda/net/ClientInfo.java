@@ -1,4 +1,4 @@
-package com.naninuneda.kirifuda.netty;
+package com.naninuneda.kirifuda.net;
 
 public class ClientInfo {
 
@@ -8,10 +8,10 @@ public class ClientInfo {
 	public ClientInfo(int version, String name){
 		this.version = version;
 		if(!name.matches("[0-9a-zA-Z]+")){
-			System.out.println("クライアント名が半角英数字ではありません．");
+			System.out.println("クライアント名が半角英数字ではありません?�?");
 			this.name = "nameless";
 		}else if(name.length() > 9){
-			System.out.println("クライアント名が9文字以上です．短縮されます．");
+			System.out.println("クライアント名�?9�?字以上です．短縮されます�?");
 			this.name = name.substring(0, 9);
 		}else{
 			this.name = name;
@@ -32,10 +32,10 @@ public class ClientInfo {
 
 	public void setName(String name){
 		if(!name.matches("[0-9a-zA-Z]+")){
-			System.out.println("クライアント名が半角英数字ではありません．");
+			System.out.println("クライアント名が半角英数字ではありません?�?");
 			this.name = "nameless";
 		}else if(name.length() > 9){
-			System.out.println("クライアント名が9文字以上です．短縮されます．");
+			System.out.println("クライアント名�?9�?字以上です．短縮されます�?");
 			this.name = name.substring(0, 9);
 		}else{
 			this.name = name;
