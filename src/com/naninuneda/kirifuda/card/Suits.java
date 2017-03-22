@@ -1,44 +1,36 @@
 package com.naninuneda.kirifuda.card;
 
 import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class Suits implements Iterable<Suit>{
 
-	private LinkedList<Suit> list;
+	private Set<Suit> set;
 
 	public Suits(){
-		list = new LinkedList<Suit>();
+		set = new TreeSet<Suit>();
 	}
 
-	public void add(Suit suit){
-		list.add(suit);
+	public boolean add(Suit suit){
+		return set.add(suit);
 	}
 
-	public void add(Suits suits){
-		list.addAll(suits.asList());
+	private Set<Suit> getSet(){
+		return set;
 	}
 
-	public List<Suit> asList(){
-		return list;
-	}
-
+	/** 指定された引数のスートを含む場合trueを返します **/
 	public boolean contains(Suit suit){
-		return list.contains(suit);
+		return set.contains(suit);
 	}
 
+	/** 指定された引数のスートのすべてを含む場合trueを返します **/
 	public boolean contains(Suits suits){
-		boolean all = true;
-		for(Suit suit : suits){
-			if(!list.contains(suit)){
-				all = false;
-				break;
-			}
-		}
-		return all;
+		return set.containsAll(suits.getSet());
 	}
 
+	/** スート集合のスートが完全に同じであった場合trueを返します．完全に同じでない場合falseを返します． **/
 	public boolean equals(Suits suits){
 		if(this.contains(suits) && suits.contains(this)){
 			return true;
@@ -46,24 +38,24 @@ public class Suits implements Iterable<Suit>{
 		return false;
 	}
 
-	public Suit get(int index){
-		return list.get(index);
-	}
-
+	/** スート集合の中身が空である場合trueを返します．から出ない場合falseを返します． **/
 	public boolean isEmpty(){
-		return list.isEmpty();
+		return set.isEmpty();
 	}
 
 	@Override
 	public Iterator<Suit> iterator() {
-		return list.iterator();
+		return set.iterator();
 	}
 
 	public boolean remove(Suit suit){
-		return list.remove(suit);
+		return set.remove(suit);
 	}
 
-	public boolean remove(Suits suits){
-		return list.removeAll(suits.asList());
+	public void remove(Suits suits){
+		for(Suit suit : suits){
+			set.remove(suit);
+		}
 	}
+
 }

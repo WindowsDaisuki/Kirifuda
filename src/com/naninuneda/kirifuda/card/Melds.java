@@ -1,42 +1,35 @@
 package com.naninuneda.kirifuda.card;
 
 import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class Melds implements Iterable<Meld>{
 
-	private LinkedList<Meld> list;
+	private Set<Meld> set;
 
 	protected Melds(){
-		list = new LinkedList<Meld>();
+		set = new TreeSet<Meld>();
+	}
+
+	private Set<Meld> getSet(){
+		return set;
 	}
 
 	public void add(Meld meld){
-		list.add(meld);
+		set.add(meld);
 	}
 
 	public void add(Melds melds){
-		list.addAll(melds.asList());
-	}
-
-	public List<Meld> asList(){
-		return list;
+		set.addAll(melds.getSet());
 	}
 
 	public boolean contains(Meld meld){
-		return list.contains(meld);
+		return set.contains(meld);
 	}
 
 	public boolean contains(Melds melds){
-		boolean all = true;
-		for(Meld meld : melds){
-			if(!list.contains(meld)){
-				all = false;
-				break;
-			}
-		}
-		return all;
+		return set.contains(melds.getSet());
 	}
 
 	public boolean equals(Melds melds){
@@ -46,25 +39,21 @@ public class Melds implements Iterable<Meld>{
 		return false;
 	}
 
-	public Meld get(int index){
-		return list.get(index);
-	}
-
 	public boolean isEmpty(){
-		return list.isEmpty();
+		return set.isEmpty();
 	}
 
 	@Override
 	public Iterator<Meld> iterator() {
-		return list.iterator();
+		return set.iterator();
 	}
 
 	public boolean remove(Meld meld){
-		return list.remove(meld);
+		return set.remove(meld);
 	}
 
 	public boolean remove(Melds melds){
-		return list.removeAll(melds.asList());
+		return set.removeAll(melds.getSet());
 	}
 
 }

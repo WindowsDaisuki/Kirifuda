@@ -1,144 +1,89 @@
 package com.naninuneda.kirifuda.card;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import com.naninuneda.kirifuda.card.Cards;
 import com.naninuneda.kirifuda.card.Rank;
 import com.naninuneda.kirifuda.card.Suit;
 
-public final class Card {
+public enum NormalCard implements Card {
 
+	S3(Rank.THREE,Suit.SPADES),
+	S4(Rank.FOUR,Suit.SPADES),
+	S5(Rank.FIVE,Suit.SPADES),
+	S6(Rank.SIX,Suit.SPADES),
+	S7(Rank.SEVEN,Suit.SPADES),
+	S8(Rank.EIGHT,Suit.SPADES),
+	S9(Rank.NINE,Suit.SPADES),
+	S10(Rank.TEN,Suit.SPADES),
+	SJ(Rank.JACK,Suit.SPADES),
+	SQ(Rank.QUEEN,Suit.SPADES),
+	SK(Rank.KING,Suit.SPADES),
+	SA(Rank.ACE,Suit.SPADES),
+	S2(Rank.TWO,Suit.SPADES),
+
+	H3(Rank.THREE,Suit.HEARTS),
+	H4(Rank.FOUR,Suit.HEARTS),
+	H5(Rank.FIVE,Suit.HEARTS),
+	H6(Rank.SIX,Suit.HEARTS),
+	H7(Rank.SEVEN,Suit.HEARTS),
+	H8(Rank.EIGHT,Suit.HEARTS),
+	H9(Rank.NINE,Suit.HEARTS),
+	H10(Rank.TEN,Suit.HEARTS),
+	HJ(Rank.JACK,Suit.HEARTS),
+	HQ(Rank.QUEEN,Suit.HEARTS),
+	HK(Rank.KING,Suit.HEARTS),
+	HA(Rank.ACE,Suit.HEARTS),
+	H2(Rank.TWO,Suit.HEARTS),
+
+	C3(Rank.THREE,Suit.CLUBS),
+	C4(Rank.FOUR,Suit.CLUBS),
+	C5(Rank.FIVE,Suit.CLUBS),
+	C6(Rank.SIX,Suit.CLUBS),
+	C7(Rank.SEVEN,Suit.CLUBS),
+	C8(Rank.EIGHT,Suit.CLUBS),
+	C9(Rank.NINE,Suit.CLUBS),
+	C10(Rank.TEN,Suit.CLUBS),
+	CJ(Rank.JACK,Suit.CLUBS),
+	CQ(Rank.QUEEN,Suit.CLUBS),
+	CK(Rank.KING,Suit.CLUBS),
+	CA(Rank.ACE,Suit.CLUBS),
+	C2(Rank.TWO,Suit.CLUBS),
+
+	D3(Rank.THREE,Suit.DIAMONDS),
+	D4(Rank.FOUR,Suit.DIAMONDS),
+	D5(Rank.FIVE,Suit.DIAMONDS),
+	D6(Rank.SIX,Suit.DIAMONDS),
+	D7(Rank.SEVEN,Suit.DIAMONDS),
+	D8(Rank.EIGHT,Suit.DIAMONDS),
+	D9(Rank.NINE,Suit.DIAMONDS),
+	D10(Rank.TEN,Suit.DIAMONDS),
+	DJ(Rank.JACK,Suit.DIAMONDS),
+	DQ(Rank.QUEEN,Suit.DIAMONDS),
+	DK(Rank.KING,Suit.DIAMONDS),
+	DA(Rank.ACE,Suit.DIAMONDS),
+	D2(Rank.TWO,Suit.DIAMONDS);
 
 	private final Rank rank;
 	private final Suit suit;
-	private static Map<String, Card> values = new HashMap();
 
-	static {
-		for (Rank rank : Rank.values()) {
-			for (Suit suit : Suit.values()) {
-				Card card = new Card(suit, rank);
-				values.put(suit.toString() + rank.toString(), card);
-			}
-		}
-		values.put("JOKER", new Card(null, null));
+	private NormalCard(final Rank rank,final Suit suit){
+		this.rank = rank;
+		this.suit = suit;
 	}
 
 	public Rank getRank() {
-		if (this == JOKER) {
-			throw new IllegalStateException("JOKERにはランクはありません");
-		}
 		return this.rank;
 	}
 
 	public Suit getSuit() {
-		if (this == JOKER) {
-			throw new IllegalStateException("JOKERにはスートはありません");
-		}
 		return this.suit;
 	}
 
-	public static final Cards values() {
-		return new Cards(new Card[] { S3, S4, S5, S6, S7, S8, S9, S10, SJ, SQ, SK, SA, S2, H3, H4, H5, H6, H7, H8, H9, H10,
-				HJ, HQ, HK, HA, H2, C3, C4, C5, C6, C7, C8, C9, C10, CJ, CQ, CK, CA, C2, D3, D4, D5, D6, D7, D8, D9,
-				D10, DJ, DQ, DK, DA, D2, JOKER });
-	}
-
-	public static final Card S3 = valueOf("S3");
-	public static final Card H3 = valueOf("H3");
-	public static final Card C3 = valueOf("C3");
-	public static final Card D3 = valueOf("D3");
-	public static final Card S4 = valueOf("S4");
-	public static final Card H4 = valueOf("H4");
-	public static final Card C4 = valueOf("C4");
-	public static final Card D4 = valueOf("D4");
-	public static final Card S5 = valueOf("S5");
-	public static final Card H5 = valueOf("H5");
-	public static final Card C5 = valueOf("C5");
-	public static final Card D5 = valueOf("D5");
-	public static final Card S6 = valueOf("S6");
-	public static final Card H6 = valueOf("H6");
-	public static final Card C6 = valueOf("C6");
-	public static final Card D6 = valueOf("D6");
-	public static final Card S7 = valueOf("S7");
-	public static final Card H7 = valueOf("H7");
-	public static final Card C7 = valueOf("C7");
-	public static final Card D7 = valueOf("D7");
-	public static final Card S8 = valueOf("S8");
-	public static final Card H8 = valueOf("H8");
-	public static final Card C8 = valueOf("C8");
-	public static final Card D8 = valueOf("D8");
-	public static final Card S9 = valueOf("S9");
-	public static final Card H9 = valueOf("H9");
-	public static final Card C9 = valueOf("C9");
-	public static final Card D9 = valueOf("D9");
-	public static final Card S10 = valueOf("S10");
-	public static final Card H10 = valueOf("H10");
-	public static final Card C10 = valueOf("C10");
-	public static final Card D10 = valueOf("D10");
-	public static final Card SJ = valueOf("SJ");
-	public static final Card HJ = valueOf("HJ");
-	public static final Card CJ = valueOf("CJ");
-	public static final Card DJ = valueOf("DJ");
-	public static final Card SQ = valueOf("SQ");
-	public static final Card HQ = valueOf("HQ");
-	public static final Card CQ = valueOf("CQ");
-	public static final Card DQ = valueOf("DQ");
-	public static final Card SK = valueOf("SK");
-	public static final Card HK = valueOf("HK");
-	public static final Card CK = valueOf("CK");
-	public static final Card DK = valueOf("DK");
-	public static final Card SA = valueOf("SA");
-	public static final Card HA = valueOf("HA");
-	public static final Card CA = valueOf("CA");
-	public static final Card DA = valueOf("DA");
-	public static final Card S2 = valueOf("S2");
-	public static final Card H2 = valueOf("H2");
-	public static final Card C2 = valueOf("C2");
-	public static final Card D2 = valueOf("D2");
-	public static final Card JOKER = valueOf("JOKER");
-
-	private Card(Suit suit, Rank rank) {
-		this.suit = suit;
-		this.rank = rank;
-	}
-
-	public static Card valueOf(Suit suit, Rank rank) {
-		return (Card) values.get(suit.toString() + rank.toString());
-	}
-
-	public static Boolean validate(String str) {
-		if (str.equals("JOKER")) {
-			return Boolean.valueOf(true);
-		}
-		if (str.length() < 2) {
-			return Boolean.valueOf(false);
-		}
-		char firstChar = str.charAt(0);
-		char secondChar = str.charAt(1);
-		if ((Suit.validate(firstChar).booleanValue()) && (Rank.validate(secondChar).booleanValue())) {
-			return Boolean.valueOf(true);
-		}
-		return Boolean.valueOf(false);
-	}
-
-	public static Card valueOf(String str) {
-		if (str.equals("JOKER")) {
-			return (Card) values.get("JOKER");
-		}
-		char firstChar = str.charAt(0);
-		char secondChar = str.charAt(1);
-		if (validate(str).booleanValue()) {
-			return (Card) values.get(Suit.valueOf(firstChar).toString() + Rank.valueOf(secondChar).toString());
-		}
-		throw new IllegalArgumentException("Card.valueOf(String) : Illegal Argument " + str);
-	}
-
 	public String toString() {
-		if (this == JOKER) {
-			return "JOKER";
-		}
 		return this.suit.toString() + this.rank.toString();
+	}
+
+	@Override
+	public boolean isJoker() {
+		return false;
 	}
 
 }

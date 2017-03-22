@@ -10,8 +10,7 @@ public class Meld extends Cards{
 	}
 
 	protected Meld(Cards cards,Meld.Type type){
-		super();
-		this.add(cards);
+		super(cards);
 		this.type = type;
 	}
 
