@@ -1,6 +1,7 @@
 package com.naninuneda.kirifuda.card;
 
 public enum JokerCard implements Card {
+
 	Joker;
 
 	@Override

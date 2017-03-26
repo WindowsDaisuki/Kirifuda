@@ -16,6 +16,7 @@ public class Suits implements Iterable<Suit>{
 		return set.add(suit);
 	}
 
+	/** Setを返します． **/
 	private Set<Suit> getSet(){
 		return set;
 	}

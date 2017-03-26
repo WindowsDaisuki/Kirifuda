@@ -1,5 +1,7 @@
 package com.naninuneda.kirifuda.card;
 
+import java.lang.reflect.Field;
+
 public interface Card {
 
 	static final JokerCard Joker = JokerCard.Joker;
@@ -62,5 +64,15 @@ public interface Card {
 
 	/** カードがJokerであればtrue，Jokerでなければfalseを返します． **/
 	public boolean isJoker();
+
+	public static Card convert(String name){
+		NormalCard[] cards = NormalCard.class.getEnumConstants();
+		for(NormalCard card:cards){
+			if(card.name().equals(name)){
+				return card;
+			}
+		}
+		return JokerCard.Joker;
+	}
 
 }
